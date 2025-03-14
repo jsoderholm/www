@@ -1,0 +1,29 @@
+---
+import Head from "@/components/head.astro"
+import siteConfig from "@/config/site.config"
+import Header from "@/components/layout/header.astro"
+import type { HTMLAttributes } from "astro/types"
+import Footer from "@/components/layout/footer.astro"
+import { twMerge } from "tailwind-merge"
+
+interface Props extends HTMLAttributes<"main"> {
+  title?: string
+}
+
+const { title = siteConfig.title, class: className, ...props } = Astro.props
+---
+
+<html lang={siteConfig.lang}>
+  <head>
+    <Head title={title} />
+  </head>
+  <body class="font-serif antialiased">
+    <div class="layout flex min-h-svh flex-col">
+      <Header title={title} />
+      <main data-animate data-animate-speed="slow" class={twMerge("flex-1", className)} {...props}>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

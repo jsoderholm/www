@@ -1,0 +1,52 @@
+{
+  "name": "johnsoderholm",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "prettier . -c",
+    "format": "prettier . --write",
+    "knip": "knip"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.1",
+    "@astrojs/sitemap": "^3.2.1",
+    "@nanostores/persistent": "^0.10.2",
+    "@tailwindcss/vite": "^4.0.12",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "astro": "^5.4.2",
+    "astro-icon": "^1.1.5",
+    "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.0.4",
+    "nanostores": "^0.11.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^4.0.12"
+  },
+  "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3",
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "knip": "^5.45.0",
+    "lefthook": "^1.11.3",
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sass-embedded": "^1.85.1",
+    "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ],
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+---
+import siteConfig from "@/config/site.config"
+import Link from "@/components/link.astro"
+import { Icon } from "astro-icon/components"
+import { Command } from "@/components/command"
+
+const domain = new URL(siteConfig.url).hostname
+const year = new Date().getFullYear()
+---
+
+<footer class="flex items-center justify-between pb-12 text-end text-sm md:pb-16">
+  <p>© {domain} {year}</p>
+  <Link href={siteConfig.repository}>
+    Source Code<Icon name="link" />
+  </Link>
+</footer>
+
+<Command client:idle />
+
+<script>
+  import { CMD_K_EVENT } from "@/lib/constants"
+
+  window.addEventListener("keydown", (e) =>
+    e.key === "k" && (e.metaKey || e.ctrlKey)
+      ? document.dispatchEvent(new Event(CMD_K_EVENT))
+      : undefined
+  )
+</script>

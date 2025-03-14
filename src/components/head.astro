@@ -1,0 +1,51 @@
+---
+import siteConfig from "@/config/site.config"
+import { STORAGE_THEME_KEY, THEME_MAP } from "@/lib/theme"
+import "@/styles/global.css"
+import "@/styles/animation.scss"
+
+const { title } = Astro.props
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+
+<!-- Icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Primary Meta Tags -->
+<meta content={siteConfig.title} name="title" />
+<meta content={siteConfig.description} name="description" />
+<meta content={siteConfig.author} name="author" />
+
+<!-- Font Preloading -->
+<link rel="preload" href="/fonts/arita-buri-medium.woff2" as="font" type="font/woff2" crossorigin />
+<link
+  rel="preload"
+  href="/fonts/arita-buri-semibold.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link rel="preload" href="/fonts/arita-buri-bold.woff2" as="font" type="font/woff2" crossorigin />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<meta content={Astro.generator} name="generator" />
+
+<script is:inline define:vars={{ STORAGE_THEME_KEY, THEME_MAP }}>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem(STORAGE_THEME_KEY))
+      return localStorage.getItem(STORAGE_THEME_KEY)
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? THEME_MAP.dark
+      : THEME_MAP.light
+  }
+
+  const isDark = getThemePreference() === THEME_MAP.dark
+  document.documentElement.classList[isDark ? "add" : "remove"](THEME_MAP.dark)
+  localStorage.setItem(STORAGE_THEME_KEY, isDark ? THEME_MAP.dark : THEME_MAP.light)
+</script>

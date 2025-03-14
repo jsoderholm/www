@@ -1,0 +1,16 @@
+---
+import Button from "@/components/button.astro"
+import { Icon } from "astro-icon/components"
+---
+
+<Button data-search-button size="icon">
+  <Icon name="search" class="size-5" />
+</Button>
+
+<script>
+  import { CMD_K_EVENT } from "@/lib/constants"
+
+  document
+    .querySelector("[data-search-button]")
+    ?.addEventListener("click", () => document.dispatchEvent(new Event(CMD_K_EVENT)))
+</script>

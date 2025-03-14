@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Arita Buri", serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.394 0 0);
+  --accent: oklch(0.967 0 0);
+  --accent-foreground: oklch(0.252 0 0);
+  --border: oklch(0.925 0 0);
+}
+
+.dark {
+  --background: oklch(0.191 0 0);
+  --foreground: oklch(0.757 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(0.309 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Custom scrollbar styling. Thanks @pranathiperii. */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  ::selection {
+    @apply bg-accent shadow-none;
+  }
+
+  b {
+    @apply text-accent-foreground;
+  }
+}
+
+@layer utilities {
+  .layout {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    @apply pt-24 md:pt-32;
+    @apply md:max-w-xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl;
+  }
+}
+
+@font-face {
+  font-family: "Arita Buri";
+  src: url("/fonts/arita-buri-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arita Buri";
+  src: url("/fonts/arita-buri-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arita Buri";
+  src: url("/fonts/arita-buri-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

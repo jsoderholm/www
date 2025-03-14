@@ -1,0 +1,30 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - name: 🪖 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: "pnpm"
+
+      - name: 📦 Install Dependencies
+        run: pnpm install -D
+
+      - name: 🚀 Run Prettier
+        run: pnpm run check

@@ -1,0 +1,29 @@
+---
+import { cva, type VariantProps } from "class-variance-authority"
+import type { HTMLAttributes } from "astro/types"
+import { twMerge } from "tailwind-merge"
+
+const linkVariants = cva(
+  "inline-block hover:bg-accent hover:text-accent-foreground cursor-pointer p-1 shrink-0 rounded transition-all [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 whitespace-nowrap",
+  {
+    variants: {
+      variant: {
+        icon: "",
+        default:
+          "decoration-border leading-none underline decoration-1 underline-offset-4 hover:decoration-transparent hover:underline-offset-0 -translate-x-0.5 has-[>svg]:inline-flex [&_svg:not([class*='size-'])]:size-3.5 items-center gap-0.5"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
+interface Props extends HTMLAttributes<"a">, VariantProps<typeof linkVariants> {}
+
+const { class: className, variant, ...props } = Astro.props
+---
+
+<a class={twMerge(linkVariants({ variant }), className)} {...props}>
+  <slot />
+</a>

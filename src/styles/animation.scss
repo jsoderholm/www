@@ -1,0 +1,41 @@
+/* animate intro stage */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes intro-stage {
+    0% {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  [data-animate] {
+    --delay: 50ms;
+    --start: 0ms;
+
+    &[data-animate-speed="slow"] {
+      --delay: 100ms;
+    }
+
+    &[data-animate-speed="fast"] {
+      --delay: 25ms;
+    }
+
+    > * {
+      --lv-wait: 0;
+      animation: intro-stage 0.5s both;
+      animation-delay: calc(
+        var(--lv) * var(--delay) + var(--lv-wait) * var(--delay) + var(--start)
+      );
+
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          --lv: #{$i};
+        }
+      }
+    }
+  }
+}
