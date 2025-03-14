@@ -20,11 +20,11 @@ jobs:
       - name: 🪖 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 22
           cache: "pnpm"
 
       - name: 📦 Install Dependencies
-        run: pnpm install -D
+        run: pnpm install
 
       - name: 🚀 Run Prettier
         run: pnpm run check
