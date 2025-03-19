@@ -4,15 +4,19 @@ import SearchButton from "@/components/search-button.astro"
 
 interface Props {
   title: string
+  description?: string
 }
 
-const { title } = Astro.props
+const { title, description } = Astro.props
 ---
 
-<header class="mb-7 flex items-center justify-between">
-  <h1 class="text-accent-foreground font-bold">{`${title} ﹒ jsoderholm`}</h1>
-  <div class="flex gap-1">
-    <SearchButton />
-    <ThemeToggle />
+<header class="mb-7">
+  <div class="flex items-center justify-between">
+    <h1 class="text-accent-foreground font-bold">{`${title} ﹒ jsoderholm`}</h1>
+    <div class="flex gap-1">
+      <SearchButton />
+      <ThemeToggle />
+    </div>
   </div>
+  {description && <p class="text-sm">{description}</p>}
 </header>

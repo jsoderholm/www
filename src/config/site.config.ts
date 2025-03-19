@@ -2,7 +2,7 @@ const siteConfig = {
   author: "John Söderholm",
   description: "John Söderholm",
   lang: "en",
-  title: "John S",
+  title: "John Söderholm",
   mailto: "mailto:soederholm.john@gmail.com",
   url: "https://johnsoderholm.com",
   github: "https://github.com/jsoderholm",

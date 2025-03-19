@@ -5,42 +5,21 @@ import Layout from "@/layouts/layout.astro"
 import { Icon } from "astro-icon/components"
 ---
 
-<Layout class="space-y-7">
-  <p>
-    Cillum Lorem <b>consectetur</b> officia exercitation deserunt laboris dolor. Laborum cillum incididunt
-    minim commodo mollit ut aute anim do aute consequat tempor aliqua esse est. Do nisi eu ea minim exercitation
-    duis non ex.
-  </p>
+<Layout>
   <div class="space-y-2">
     <p>
-      Currently working at <Link href="https://julo.se"><b>Julo</b><Icon name="link" /></Link>.
+      Currently working at <Link href="https://julo.se" external
+        ><b>Julo</b><Icon name="link" /></Link
+      >.
     </p>
     <div class="flex items-center gap-0.5">
-      <Link
-        rel="noopener noreferrer"
-        target="_blank"
-        aria-hidden="true"
-        variant="icon"
-        href={siteConfig.mailto}
-      >
+      <Link variant="icon" href={siteConfig.mailto} external>
         <Icon name="email" />
       </Link>
-      <Link
-        rel="noopener noreferrer"
-        target="_blank"
-        aria-hidden="true"
-        variant="icon"
-        href={siteConfig.github}
-      >
+      <Link variant="icon" href={siteConfig.github} external>
         <Icon name="github" />
       </Link>
-      <Link
-        rel="noopener noreferrer"
-        target="_blank"
-        aria-hidden="true"
-        variant="icon"
-        href={siteConfig.linkedin}
-      >
+      <Link variant="icon" href={siteConfig.linkedin} external>
         <Icon name="linkedin" />
       </Link>
     </div>
