@@ -49,3 +49,9 @@ const { title } = Astro.props
   document.documentElement.classList[isDark ? "add" : "remove"](THEME_MAP.dark)
   localStorage.setItem(STORAGE_THEME_KEY, isDark ? THEME_MAP.dark : THEME_MAP.light)
 </script>
+
+<script
+  is:inline
+  async
+  src="https://umami.johnsoderholm.com/script.js"
+  data-website-id="fe12efe0-5715-4ccc-81c2-b1c763e36213"></script>

@@ -11,6 +11,9 @@ const linkVariants = cva(
         icon: "",
         default:
           "decoration-border leading-none underline decoration-1 underline-offset-4 hover:decoration-transparent hover:underline-offset-0 -translate-x-0.5 has-[>svg]:inline-flex [&_svg:not([class*='size-'])]:size-3.5 items-center gap-0.5"
+      },
+      external: {
+        true: null
       }
     },
     defaultVariants: {
@@ -21,7 +24,9 @@ const linkVariants = cva(
 
 interface Props extends HTMLAttributes<"a">, VariantProps<typeof linkVariants> {}
 
-const { class: className, variant, ...props } = Astro.props
+const { class: className, variant, external, ...rest } = Astro.props
+
+const props = external ? { target: "_blank", rel: "noopener noreferrer", ...rest } : rest
 ---
 
 <a class={twMerge(linkVariants({ variant }), className)} {...props}>
