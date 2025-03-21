@@ -1,10 +1,10 @@
 // @ts-check
-import { defineConfig } from "astro/config"
+import { defineConfig, envField } from "astro/config"
 import tailwindcss from "@tailwindcss/vite"
 import icon from "astro-icon"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
-import siteConfig from "./src/config/site.config"
+import siteConfig from "./src/site.config"
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +12,18 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-
+  env: {
+    schema: {
+      NOTION_TOKEN: envField.string({
+        context: "server",
+        access: "secret"
+      }),
+      NOTION_DATABASE_ID: envField.string({
+        context: "server",
+        access: "secret"
+      })
+    }
+  },
   integrations: [
     react(),
     sitemap(),

@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/layout.astro"
+import { getCollection, type CollectionEntry } from "astro:content"
+import { format, getYear } from "date-fns"
+
+const projects = await getCollection("projects")
+const timeline = new Map<number, CollectionEntry<"projects">[]>()
+
+for (const project of projects) {
+  const year = getYear(project.data.properties.Created)
+  if (!timeline.has(year)) timeline.set(year, [project])
+  else timeline.get(year)?.push(project)
+}
+---
+
+<Layout title="Projects" description="A space for some of my projects">
+  <div data-animate data-animate-speed="slow" class="group first:border-t">
+    {
+      Array.from(timeline.entries()).map(([year, projects]) => (
+        <div class="group/year flex gap-2 border-b py-7 sm:gap-8">
+          <h3 class="group-hover/year:bg-accent group-hover/year:text-accent-foreground h-fit cursor-default rounded px-1.5 py-0.5 transition-opacity">
+            {year}
+          </h3>
+          <div class="flex-1">
+            {projects.map((p) => (
+              <a
+                href={p.data.properties.URL}
+                class="group/item flex justify-between transition-opacity not-last:pb-4 group-hover:opacity-40 hover:!opacity-100 sm:items-center"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <div class="group-hover/item:bg-accent flex flex-col gap-x-2 rounded px-1.5 py-0.5 sm:flex-row sm:items-center">
+                  <p class="text-accent-foreground font-semibold">{p.data.properties.Title}</p>
+                  <span class="text-sm sm:text-base">{p.data.properties.Description}</span>
+                </div>
+                <p class="group-hover/item:bg-accent group-hover/item:text-accent-foreground rounded px-1.5 py-0.5 whitespace-nowrap">
+                  {format(p.data.properties.Created, "dd. MM.")}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

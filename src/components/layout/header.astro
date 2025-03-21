@@ -1,16 +1,18 @@
 ---
 import ThemeToggle from "@/components/theme-toggle.astro"
 import SearchButton from "@/components/search-button.astro"
+import Link from "@/components/link.astro"
 
 interface Props {
   title: string
-  description?: string
+  description?: string | undefined
 }
 
+const currentPath = Astro.url.pathname
 const { title, description } = Astro.props
 ---
 
-<header class="mb-7">
+<header data-animate data-animate-speed="slow" class="mb-7 space-y-0.5">
   <div class="flex items-center justify-between">
     <h1 class="text-accent-foreground font-bold">{`${title} ﹒ jsoderholm`}</h1>
     <div class="flex gap-1">
@@ -19,4 +21,12 @@ const { title, description } = Astro.props
     </div>
   </div>
   {description && <p class="text-sm">{description}</p>}
+  {
+    currentPath !== "/" && (
+      <div class="flex items-center gap-x-1 text-sm">
+        by
+        <Link href="/">John S</Link>
+      </div>
+    )
+  }
 </header>
