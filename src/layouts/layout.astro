@@ -1,6 +1,6 @@
 ---
 import Head from "@/components/head.astro"
-import siteConfig from "@/config/site.config"
+import siteConfig from "@/site.config"
 import Header from "@/components/layout/header.astro"
 import type { HTMLAttributes } from "astro/types"
 import Footer from "@/components/layout/footer.astro"
@@ -8,9 +8,10 @@ import { twMerge } from "tailwind-merge"
 
 interface Props extends HTMLAttributes<"main"> {
   title?: string
+  description?: string | undefined
 }
 
-const { title = siteConfig.title, class: className, ...props } = Astro.props
+const { title = siteConfig.title, description, class: className, ...props } = Astro.props
 ---
 
 <html lang={siteConfig.lang}>
@@ -19,7 +20,7 @@ const { title = siteConfig.title, class: className, ...props } = Astro.props
   </head>
   <body class="font-serif antialiased">
     <div class="layout flex min-h-svh flex-col">
-      <Header title={title} />
+      <Header title={title} description={description} />
       <main data-animate data-animate-speed="slow" class={twMerge("flex-1", className)} {...props}>
         <slot />
       </main>

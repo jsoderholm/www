@@ -1,6 +1,6 @@
 ---
 import Link from "@/components/link.astro"
-import siteConfig from "@/config/site.config"
+import siteConfig from "@/site.config"
 import Layout from "@/layouts/layout.astro"
 import { Icon } from "astro-icon/components"
 ---
@@ -22,6 +22,15 @@ import { Icon } from "astro-icon/components"
       <Link variant="icon" href={siteConfig.linkedin} external>
         <Icon name="linkedin" />
       </Link>
+    </div>
+  </div>
+  <div class="mt-14 flex flex-col gap-2 sm:flex-row sm:gap-7">
+    <p>My Space</p>
+    <div class="flex flex-col gap-1">
+      <div class="flex items-center gap-3">
+        <Link href="/projects"><b>Projects</b></Link>
+        <span class="text-sm">A space for some of my projects</span>
+      </div>
     </div>
   </div>
 </Layout>
