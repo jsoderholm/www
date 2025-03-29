@@ -1,0 +1,24 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+    reviewers:
+      - "jsoderholm"
+
+    groups:
+      astro:
+        patterns:
+          - "*astro*"
+          - "@astrojs/*"
+      react:
+        patterns:
+          - "react*"
+          - "@types/react*"
+      misc:
+        patterns:
+          - "*"
