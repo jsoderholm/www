@@ -16,6 +16,7 @@
     "@astrojs/react": "^4.2.1",
     "@astrojs/sitemap": "^3.2.1",
     "@nanostores/persistent": "^0.10.2",
+    "@sentry/astro": "^9.10.1",
     "@tailwindcss/vite": "^4.0.12",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

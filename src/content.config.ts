@@ -1,12 +1,13 @@
 import { z } from "astro/zod"
 import { defineCollection } from "astro:content"
+import { NOTION_DATABASE_ID, NOTION_TOKEN } from "astro:env/server"
 import { notionLoader, notionPageSchema } from "notion-astro-loader"
 import { transformedPropertySchema } from "notion-astro-loader/schemas"
 
 const projects = defineCollection({
   loader: notionLoader({
-    auth: import.meta.env.NOTION_TOKEN,
-    database_id: import.meta.env.NOTION_DATABASE_ID
+    auth: NOTION_TOKEN,
+    database_id: NOTION_DATABASE_ID
   }),
   schema: notionPageSchema({
     properties: z.object({
