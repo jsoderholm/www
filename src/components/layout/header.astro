@@ -14,7 +14,9 @@ const { title, description } = Astro.props
 
 <header data-animate data-animate-speed="slow" class="mb-7 space-y-0.5">
   <div class="flex items-center justify-between">
-    <h1 class="text-accent-foreground font-bold">{`${title} ﹒ jsoderholm`}</h1>
+    <h1 data-pagefind-filter="Pages" class="text-accent-foreground font-bold">
+      {title}
+    </h1>
     <div class="flex gap-1">
       <SearchButton />
       <ThemeToggle />

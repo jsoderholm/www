@@ -15,6 +15,13 @@ const year = new Date().getFullYear()
   </Link>
 </footer>
 
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", async () => {
+    window.pagefind = await import("/pagefind/pagefind.js")
+    pagefind.init()
+  })
+</script>
+
 <Command client:idle />
 
 <script>

@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind",
+    "pagefind:dev": "pagefind && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "astro": "astro",
     "check": "prettier . -c",
@@ -37,6 +38,7 @@
     "@types/node": "^22.13.14",
     "knip": "^5.46.3",
     "lefthook": "^1.11.5",
+    "pagefind": "^1.3.0",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
