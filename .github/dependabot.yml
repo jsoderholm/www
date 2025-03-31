@@ -5,9 +5,12 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
     commit-message:
-      prefix: "chore"
+      prefix: "deps"
     reviewers:
+      - "jsoderholm"
+    assignees:
       - "jsoderholm"
 
     groups:

@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
-          regexp: "(feat|fix|docs|refactor|chore|remove|ci): .+" # Regex the title should match.
+          regexp: "(feat|fix|docs|refactor|chore|remove|ci|deps): .+" # Regex the title should match.
           helpMessage: "example: 'fix: add tailwindcss plugin to astro config'"
