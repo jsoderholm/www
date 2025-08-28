@@ -45,6 +45,9 @@
     "sass-embedded": "^1.90.0",
     "typescript": "^5.9.2"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "pnpm": {
     "ignoredBuiltDependencies": [
       "esbuild",
